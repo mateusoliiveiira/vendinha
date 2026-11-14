@@ -39,7 +39,7 @@ Uma vendinha precisa substituir o caderno de "fiado" por um sistema. O dono cada
 ## Andamento
 
 - [x] Parte 1 - Estrutura da solução, modelos, validação de CPF, contexto do banco e script SQL
-- [ ] Parte 2 - Regras de negócio (serviços)
+- [x] Parte 2 - Regras de negócio (serviços)
 - [ ] Parte 3 - Aplicação Desktop (Windows Forms)
 - [ ] Parte 4 - API REST
 
