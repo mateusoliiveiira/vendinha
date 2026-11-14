@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- permite compilar em Linux/macOS (só executa no Windows) -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- permite rodar com o runtime do .NET 9/10 caso o 8 não esteja instalado -->
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vendinha\Vendinha.csproj" />
+  </ItemGroup>
+
+</Project>

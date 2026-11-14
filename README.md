@@ -40,7 +40,7 @@ Uma vendinha precisa substituir o caderno de "fiado" por um sistema. O dono cada
 
 - [x] Parte 1 - Estrutura da solução, modelos, validação de CPF, contexto do banco e script SQL
 - [x] Parte 2 - Regras de negócio (serviços)
-- [ ] Parte 3 - Aplicação Desktop (Windows Forms)
+- [x] Parte 3 - Aplicação Desktop (Windows Forms)
 - [ ] Parte 4 - API REST
 
 ## Banco de dados
@@ -48,3 +48,13 @@ Uma vendinha precisa substituir o caderno de "fiado" por um sistema. O dono cada
 1. Instale o PostgreSQL.
 2. Crie o banco: `CREATE DATABASE vendinha;`
 3. Execute o script [`database/schema.sql`](database/schema.sql).
+
+## Aplicação Desktop (Windows Forms)
+
+Abra `Vendinha.sln` no Visual Studio e defina **Vendinha.Desktop** como projeto de inicialização, ou rode:
+
+```bash
+dotnet run --project Vendinha.Desktop
+```
+
+Telas: menu principal (`Form1`), `CadastroCliente`, `ListarClientes` (busca, paginação de 10 em 10, ordenada por quem mais deve) e `DividasCliente`.
