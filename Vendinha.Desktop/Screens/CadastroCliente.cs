@@ -3,20 +3,15 @@ using Vendinha.Services;
 
 namespace Vendinha.Desktop.Screens
 {
-    /// <summary>
-    /// Cadastro e edição de cliente.
-    /// </summary>
     public partial class CadastroCliente : Form
     {
         private readonly ClienteService service;
         private readonly int? clienteId;
 
-        /// <summary>Novo cliente.</summary>
         public CadastroCliente(ClienteService service) : this(service, null)
         {
         }
 
-        /// <summary>Edição de cliente existente (clienteId informado).</summary>
         public CadastroCliente(ClienteService service, int? clienteId)
         {
             this.service = service;

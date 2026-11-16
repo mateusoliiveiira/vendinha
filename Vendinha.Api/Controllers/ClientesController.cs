@@ -18,7 +18,6 @@ namespace Vendinha.Api.Controllers
             this.dividaService = dividaService;
         }
 
-        /// <summary>Lista clientes (maior dívida primeiro), com busca por nome e paginação de 10 em 10.</summary>
         [HttpGet]
         public IActionResult Listar([FromQuery] string? pesquisa, [FromQuery] int pagina = 1)
         {
@@ -65,7 +64,6 @@ namespace Vendinha.Api.Controllers
             return NoContent();
         }
 
-        /// <summary>Lista as dívidas do cliente.</summary>
         [HttpGet("{id:int}/dividas")]
         public IActionResult ListarDividas(int id)
         {
@@ -73,7 +71,6 @@ namespace Vendinha.Api.Controllers
             return Ok(dividaService.ListarPorCliente(id));
         }
 
-        /// <summary>Cadastra uma dívida (o cliente só pode ter uma em aberto).</summary>
         [HttpPost("{id:int}/dividas")]
         public IActionResult CriarDivida(int id, [FromBody] DividaRequest request)
         {

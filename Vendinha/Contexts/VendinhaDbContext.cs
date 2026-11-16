@@ -21,7 +21,6 @@ namespace Vendinha.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // ----- clientes -----
             var entityCliente = modelBuilder.Entity<Cliente>();
             entityCliente.ToTable("clientes");
             entityCliente.HasKey(c => c.Id);
@@ -38,7 +37,6 @@ namespace Vendinha.Contexts
                 .HasForeignKey(d => d.ClienteId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // ----- dividas -----
             var entityDivida = modelBuilder.Entity<Divida>();
             entityDivida.ToTable("dividas");
             entityDivida.HasKey(d => d.Id);

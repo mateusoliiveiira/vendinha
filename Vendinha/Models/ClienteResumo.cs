@@ -1,8 +1,5 @@
 namespace Vendinha.Models
 {
-    /// <summary>
-    /// Linha da listagem de clientes: dados do cliente + idade atualizada + total devido.
-    /// </summary>
     public class ClienteResumo
     {
         public int Id { get; set; }
@@ -11,9 +8,6 @@ namespace Vendinha.Models
         public DateTime DataNascimento { get; set; }
         public string? Email { get; set; }
 
-        /// <summary>
-        /// Soma das dívidas em aberto do cliente.
-        /// </summary>
         public decimal TotalDividas { get; set; }
 
         public int Idade

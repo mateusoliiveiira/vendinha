@@ -1,10 +1,3 @@
--- =========================================================
--- Vendinha - script de criação do banco (PostgreSQL)
--- =========================================================
--- 1) Crie o banco (rodar conectado no banco "postgres"):
---    CREATE DATABASE vendinha;
--- 2) Conecte no banco "vendinha" e rode o restante do script.
-
 DROP TABLE IF EXISTS dividas;
 DROP TABLE IF EXISTS clientes;
 
@@ -14,7 +7,7 @@ CREATE TABLE clientes (
     cpf             CHAR(11)     NOT NULL,
     data_nascimento DATE         NOT NULL,
     email           VARCHAR(150) NULL,
-    CONSTRAINT uq_clientes_cpf UNIQUE (cpf)          -- apenas um cliente por CPF
+    CONSTRAINT uq_clientes_cpf UNIQUE (cpf)
 );
 
 CREATE TABLE dividas (
@@ -30,17 +23,12 @@ CREATE TABLE dividas (
     )
 );
 
--- Regra de negócio garantida também no banco:
--- um cliente só pode ter UMA dívida em aberto
 CREATE UNIQUE INDEX uq_dividas_uma_em_aberto
     ON dividas (cliente_id)
     WHERE paga = FALSE;
 
 CREATE INDEX ix_dividas_cliente ON dividas (cliente_id);
 
--- ---------------------------------------------------------
--- Dados de exemplo (opcional)
--- ---------------------------------------------------------
 INSERT INTO clientes (nome, cpf, data_nascimento, email) VALUES
     ('Maria da Silva',      '52998224725', '1990-05-10', 'maria@email.com'),
     ('João Pereira',        '11144477735', '1985-11-23', NULL),

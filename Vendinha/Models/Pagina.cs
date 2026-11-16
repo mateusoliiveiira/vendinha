@@ -1,8 +1,5 @@
 namespace Vendinha.Models
 {
-    /// <summary>
-    /// Resultado paginado genérico.
-    /// </summary>
     public class Pagina<T>
     {
         public List<T> Itens { get; set; } = new List<T>();

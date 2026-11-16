@@ -14,9 +14,6 @@ namespace Vendinha.Models
 
         private string cpf = string.Empty;
 
-        /// <summary>
-        /// CPF armazenado apenas com números.
-        /// </summary>
         [Required(ErrorMessage = "O CPF é obrigatório.")]
         [Cpf]
         public string Cpf
@@ -42,9 +39,6 @@ namespace Vendinha.Models
             }
         }
 
-        /// <summary>
-        /// Idade calculada a partir da data de nascimento (não é gravada no banco).
-        /// </summary>
         public int Idade
         {
             get { return CalcularIdade(DataNascimento); }

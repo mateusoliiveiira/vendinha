@@ -2,10 +2,6 @@ namespace Vendinha
 {
     public static class Configuracao
     {
-        /// <summary>
-        /// String de conexão padrão do PostgreSQL.
-        /// Pode ser sobrescrita pela variável de ambiente VENDINHA_DB.
-        /// </summary>
         public static string ConnectionString
         {
             get

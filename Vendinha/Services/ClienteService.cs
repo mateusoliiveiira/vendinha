@@ -5,9 +5,6 @@ using Vendinha.Models;
 
 namespace Vendinha.Services
 {
-    /// <summary>
-    /// Camada de negócio: regras e validações de clientes.
-    /// </summary>
     public class ClienteService
     {
         public const int TamanhoPaginaPadrao = 10;
@@ -23,10 +20,6 @@ namespace Vendinha.Services
         {
         }
 
-        /// <summary>
-        /// Lista clientes ordenados do que mais deve para o que menos deve,
-        /// com busca por nome (texto contido) e paginação de 10 em 10.
-        /// </summary>
         public Pagina<ClienteResumo> Listar(string? pesquisa = null, int pagina = 1, int tamanhoPagina = TamanhoPaginaPadrao)
         {
             if (pagina < 1) pagina = 1;
@@ -83,13 +76,12 @@ namespace Vendinha.Services
 
             try
             {
-                context.Clientes.Add(cliente);   // INSERT
-                context.SaveChanges();           // COMMIT
+                context.Clientes.Add(cliente);
+                context.SaveChanges();
                 return true;
             }
             catch (DbUpdateException)
             {
-                // desfaz o estado do objeto no contexto para não afetar operações futuras
                 context.Entry(cliente).State = EntityState.Detached;
                 erros.Add(new ValidationResult("Não foi possível salvar o cliente. Verifique se o CPF já está cadastrado."));
                 return false;
@@ -116,7 +108,7 @@ namespace Vendinha.Services
             cliente.DataNascimento = dados.DataNascimento;
             cliente.Email = dados.Email;
 
-            context.SaveChanges();           // UPDATE + COMMIT
+            context.SaveChanges();
             return true;
         }
 
@@ -131,15 +123,11 @@ namespace Vendinha.Services
                 return false;
             }
 
-            // as dívidas do cliente são removidas juntas (ON DELETE CASCADE)
             context.Clientes.Remove(cliente);
             context.SaveChanges();
             return true;
         }
 
-        /// <summary>
-        /// Validações dos atributos (DataAnnotations) + regras de negócio.
-        /// </summary>
         public bool Validar(Cliente cliente, out List<ValidationResult> erros)
         {
             var validationContext = new ValidationContext(cliente);
@@ -155,7 +143,6 @@ namespace Vendinha.Services
                 erros.Add(new ValidationResult("A data de nascimento não pode ser no futuro.", new[] { nameof(Cliente.DataNascimento) }));
             }
 
-            // Regra: apenas um cliente por CPF
             if (!string.IsNullOrEmpty(cliente.Cpf) &&
                 context.Clientes.Any(c => c.Cpf == cliente.Cpf && c.Id != cliente.Id))
             {

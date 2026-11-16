@@ -2,10 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vendinha.Validations
 {
-    /// <summary>
-    /// Valida se o valor informado é um CPF válido (dígitos verificadores).
-    /// Aceita com ou sem máscara (000.000.000-00).
-    /// </summary>
     public class CpfAttribute : ValidationAttribute
     {
         public CpfAttribute()
@@ -15,7 +11,6 @@ namespace Vendinha.Validations
 
         public override bool IsValid(object? value)
         {
-            // campo obrigatório é tratado pelo [Required]
             if (value is not string texto || string.IsNullOrWhiteSpace(texto))
                 return true;
 
@@ -35,7 +30,6 @@ namespace Vendinha.Validations
             if (numeros.Length != 11)
                 return false;
 
-            // CPFs com todos os dígitos iguais (111.111.111-11) são inválidos
             if (numeros.Distinct().Count() == 1)
                 return false;
 

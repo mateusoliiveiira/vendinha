@@ -1,135 +1,91 @@
-# Vendinha – Controle de contas penduradas
+# Vendinha
 
-Projeto final da disciplina **Plataforma de Desenvolvimento de Sistemas** (UNIMAR – 2026/2) – **Cenário 1: Vendinha**.
+Trabalho da materia Plataforma de Desenvolvimento de Sistemas (UNIMAR 2026/2), cenario 1: Vendinha.
 
-## Integrantes do grupo
+Sistema para controlar as contas penduradas (fiado) dos clientes de uma vendinha.
 
+## Integrantes
+RA: 2037913
 - Mateus Oliveira
-- _Nome do integrante 2_
-- _Nome do integrante 3_
-- _Nome do integrante 4_
+-----------
+RA: 2025953
+- Carlos Heinrich 
 
-## Sobre o sistema
 
-Uma vendinha precisa substituir o caderno de "fiado" por um sistema. O dono cadastra os clientes e pendura as compras como dívidas, que são acertadas no fim do mês.
+## O que o sistema faz
 
-### Funcionalidades
+- Cadastro, edicao, consulta e exclusao de clientes (nome, CPF, data de nascimento e e-mail)
+- Mostra a idade do cliente calculada pela data de nascimento
+- Cadastro de dividas para cada cliente e opcao de marcar como paga
+- Listagem de clientes ordenada por quem deve mais, de 10 em 10, com busca por nome
+- Na listagem aparece a idade e o total que o cliente deve
 
-- CRUD de clientes (nome completo, CPF, data de nascimento e e-mail)
-- Idade calculada a partir da data de nascimento
-- Cadastro de dívidas por cliente (valor, situação, data de criação e data de pagamento)
-- Marcar dívida como paga
-- Listagem de clientes:
-  - ordenada de quem **mais deve** para quem **menos deve**
-  - paginação de **10 em 10**
-  - busca por nome (texto contido, sem diferenciar maiúsculas/minúsculas)
-  - mostra idade atualizada e total de dívidas em aberto
+Regras:
 
-### Regras de negócio
+- Nome, CPF e data de nascimento sao obrigatorios
+- O CPF tem que ser valido e nao pode repetir
+- O e-mail so e validado se for preenchido
+- Cada cliente so pode ter uma divida em aberto
+- O valor da divida tem que ser maior que zero
 
-| Regra | Onde é garantida |
-|---|---|
-| Nome, CPF e data de nascimento são obrigatórios | `Cliente` (DataAnnotations) + `ClienteService.Validar` |
-| CPF precisa ser válido (dígitos verificadores) | `Validations/CpfAttribute` |
-| E-mail é validado se for informado | `[EmailAddress]` em `Cliente` |
-| Apenas um cliente por CPF | `ClienteService.Validar` + `UNIQUE (cpf)` no banco |
-| Cliente só pode ter **uma** dívida em aberto | `DividaService.Criar` (em transação) + índice único parcial no banco |
-| Valor da dívida maior que zero | `DividaService.Criar` + `CHECK (valor > 0)` |
+## Estrutura
 
-## Andamento
+- `Vendinha` - classes do sistema (models, validacao de CPF, contexto do banco e services com as regras)
+- `Vendinha.Desktop` - telas em Windows Forms
+- `Vendinha.Api` - API REST
+- `database/schema.sql` - script do banco
 
-- [x] Parte 1 - Estrutura da solução, modelos, validação de CPF, contexto do banco e script SQL
-- [x] Parte 2 - Regras de negócio (serviços)
-- [x] Parte 3 - Aplicação Desktop (Windows Forms)
-- [x] Parte 4 - API REST
+Feito em C# com .NET 8, Entity Framework Core e PostgreSQL.
 
-## Arquitetura (3 camadas)
+## Como rodar
 
-```
-Vendinha.sln
-├── Vendinha/                 → Negócio + Dados (biblioteca de classes)
-│   ├── Models/               → Cliente, Divida, ClienteResumo, Pagina<T>
-│   ├── Validations/          → CpfAttribute
-│   ├── Contexts/             → VendinhaDbContext (Entity Framework Core + PostgreSQL)
-│   └── Services/             → ClienteService, DividaService (regras de negócio)
-├── Vendinha.Desktop/         → Apresentação: Windows Forms
-│   ├── Form1                 → menu principal
-│   └── Screens/              → CadastroCliente, ListarClientes, DividasCliente
-├── Vendinha.Api/             → Apresentação: Web API REST (Swagger)
-│   └── Controllers/          → ClientesController, DividasController
-└── database/schema.sql       → script de criação do banco
-```
+### Banco
 
-- **Apresentação** (Desktop e API): só recebe a entrada e mostra o resultado.
-- **Negócio** (`Services`): valida e decide o que pode ou não acontecer.
-- **Dados** (`Contexts` + PostgreSQL): persiste as informações.
+1. Instalar o PostgreSQL
+2. Criar o banco: `CREATE DATABASE vendinha;`
+3. Rodar o script `database/schema.sql` no banco vendinha
 
-Os dois front-ends usam a **mesma** camada de negócio.
-
-## Tecnologias
-
-- C# / .NET 8 (roda também com .NET 9/10 – `RollForward=Major`)
-- Entity Framework Core 8 + Npgsql
-- PostgreSQL
-- Windows Forms
-- ASP.NET Core Web API + Swagger
-
-## Como executar
-
-### 1. Banco de dados
-
-1. Instale o PostgreSQL.
-2. Crie o banco:
-   ```sql
-   CREATE DATABASE vendinha;
-   ```
-3. Conectado ao banco `vendinha`, execute o script [`database/schema.sql`](database/schema.sql) (pgAdmin, DBeaver ou `psql -d vendinha -f database/schema.sql`).
-
-String de conexão padrão:
+A conexao usada e:
 
 ```
 Host=localhost;Port=5432;Database=vendinha;Username=postgres;Password=postgres
 ```
 
-Para mudar:
+Se a senha do seu postgres for outra, muda em `Vendinha/Configuracao.cs` (desktop) e em `Vendinha.Api/appsettings.json` (api).
 
-- **Desktop**: defina a variável de ambiente `VENDINHA_DB` ou altere `Vendinha/Configuracao.cs`.
-- **API**: altere `ConnectionStrings:Postgres` em `Vendinha.Api/appsettings.json`.
+### Desktop
 
-### 2. Aplicação Desktop (Windows)
+Abrir o `Vendinha.sln` no Visual Studio, colocar o `Vendinha.Desktop` como projeto de inicializacao e rodar. Ou:
 
-```bash
+```
 dotnet run --project Vendinha.Desktop
 ```
 
-Ou abra `Vendinha.sln` no Visual Studio e defina **Vendinha.Desktop** como projeto de inicialização.
+### API
 
-### 3. API
-
-```bash
+```
 dotnet run --project Vendinha.Api
 ```
 
-Abra `http://localhost:5080/swagger` para testar. Também há exemplos prontos em `Vendinha.Api/Vendinha.Api.http`.
+Depois abrir `http://localhost:5080/swagger`. Tem exemplos de requisicao no arquivo `Vendinha.Api/Vendinha.Api.http`.
 
-## Endpoints da API
+## Rotas da API
 
-| Método | Rota | Descrição |
+| Metodo | Rota | O que faz |
 |---|---|---|
-| GET | `/api/clientes?pesquisa=&pagina=1` | Lista clientes (maior dívida primeiro, 10 por página) |
+| GET | `/api/clientes?pesquisa=&pagina=1` | Lista os clientes |
 | GET | `/api/clientes/{id}` | Busca um cliente |
-| POST | `/api/clientes` | Cria cliente |
-| PUT | `/api/clientes/{id}` | Atualiza cliente |
-| DELETE | `/api/clientes/{id}` | Exclui cliente (e suas dívidas) |
-| GET | `/api/clientes/{id}/dividas` | Lista dívidas do cliente |
-| POST | `/api/clientes/{id}/dividas` | Pendura uma dívida `{ "valor": 50.00 }` |
-| PUT | `/api/dividas/{id}/pagar` | Marca dívida como paga |
-| DELETE | `/api/dividas/{id}` | Exclui dívida |
+| POST | `/api/clientes` | Cadastra cliente |
+| PUT | `/api/clientes/{id}` | Altera cliente |
+| DELETE | `/api/clientes/{id}` | Exclui cliente |
+| GET | `/api/clientes/{id}/dividas` | Lista as dividas do cliente |
+| POST | `/api/clientes/{id}/dividas` | Cadastra divida |
+| PUT | `/api/dividas/{id}/pagar` | Marca divida como paga |
+| DELETE | `/api/dividas/{id}` | Exclui divida |
 
-### Exemplo – criar cliente
+Exemplo para cadastrar cliente:
 
 ```json
-POST /api/clientes
 {
   "nome": "Maria da Silva",
   "cpf": "529.982.247-25",
@@ -138,40 +94,8 @@ POST /api/clientes
 }
 ```
 
-Resposta (201):
+Exemplo para cadastrar divida:
 
 ```json
-{
-  "id": 1,
-  "nome": "Maria da Silva",
-  "cpf": "52998224725",
-  "dataNascimento": "1990-05-10T00:00:00",
-  "email": "maria@email.com",
-  "idade": 36,
-  "cpfFormatado": "529.982.247-25"
-}
-```
-
-### Exemplo – listagem
-
-```json
-GET /api/clientes?pagina=1
-{
-  "itens": [
-    { "id": 1, "nome": "Maria da Silva", "cpf": "52998224725", "dataNascimento": "1990-05-10T00:00:00",
-      "email": "maria@email.com", "totalDividas": 120.50, "idade": 36 }
-  ],
-  "numeroPagina": 1,
-  "tamanhoPagina": 10,
-  "totalItens": 3,
-  "totalPaginas": 1,
-  "temProxima": false,
-  "temAnterior": false
-}
-```
-
-Erros de validação retornam **400** no formato:
-
-```json
-{ "erros": ["CPF inválido.", "O cliente já possui uma dívida em aberto. Quite-a antes de lançar outra."] }
+{ "valor": 50.00 }
 ```

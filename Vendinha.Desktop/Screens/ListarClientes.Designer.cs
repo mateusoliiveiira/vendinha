@@ -36,23 +36,14 @@ namespace Vendinha.Desktop.Screens
             btnDividas = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            //
-            // lblPesquisa
-            //
             lblPesquisa.AutoSize = true;
             lblPesquisa.Location = new Point(15, 18);
             lblPesquisa.Name = "lblPesquisa";
             lblPesquisa.Text = "Buscar por nome:";
-            //
-            // txtPesquisa
-            //
             txtPesquisa.Location = new Point(125, 15);
             txtPesquisa.Name = "txtPesquisa";
             txtPesquisa.Size = new Size(450, 23);
             txtPesquisa.TabIndex = 0;
-            //
-            // btnPesquisar
-            //
             btnPesquisar.Location = new Point(585, 14);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(100, 25);
@@ -60,51 +51,30 @@ namespace Vendinha.Desktop.Screens
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
-            //
-            // colId
-            //
             colId.HeaderText = "Id";
             colId.Name = "colId";
             colId.ReadOnly = true;
             colId.Visible = false;
-            //
-            // colNome
-            //
             colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colNome.HeaderText = "Nome";
             colNome.Name = "colNome";
             colNome.ReadOnly = true;
-            //
-            // colCpf
-            //
             colCpf.HeaderText = "CPF";
             colCpf.Name = "colCpf";
             colCpf.ReadOnly = true;
             colCpf.Width = 120;
-            //
-            // colIdade
-            //
             colIdade.HeaderText = "Idade";
             colIdade.Name = "colIdade";
             colIdade.ReadOnly = true;
             colIdade.Width = 60;
-            //
-            // colEmail
-            //
             colEmail.HeaderText = "E-mail";
             colEmail.Name = "colEmail";
             colEmail.ReadOnly = true;
             colEmail.Width = 180;
-            //
-            // colTotal
-            //
             colTotal.HeaderText = "Total devido";
             colTotal.Name = "colTotal";
             colTotal.ReadOnly = true;
             colTotal.Width = 110;
-            //
-            // dataGridView1
-            //
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -118,9 +88,6 @@ namespace Vendinha.Desktop.Screens
             dataGridView1.Size = new Size(670, 300);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
-            //
-            // btnAnterior
-            //
             btnAnterior.Location = new Point(15, 360);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(90, 28);
@@ -128,17 +95,11 @@ namespace Vendinha.Desktop.Screens
             btnAnterior.Text = "< Anterior";
             btnAnterior.UseVisualStyleBackColor = true;
             btnAnterior.Click += btnAnterior_Click;
-            //
-            // lblPagina
-            //
             lblPagina.Location = new Point(110, 360);
             lblPagina.Name = "lblPagina";
             lblPagina.Size = new Size(480, 28);
             lblPagina.Text = "Página 1 de 1";
             lblPagina.TextAlign = ContentAlignment.MiddleCenter;
-            //
-            // btnProxima
-            //
             btnProxima.Location = new Point(595, 360);
             btnProxima.Name = "btnProxima";
             btnProxima.Size = new Size(90, 28);
@@ -146,9 +107,6 @@ namespace Vendinha.Desktop.Screens
             btnProxima.Text = "Próxima >";
             btnProxima.UseVisualStyleBackColor = true;
             btnProxima.Click += btnProxima_Click;
-            //
-            // btnNovo
-            //
             btnNovo.Location = new Point(15, 405);
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(120, 32);
@@ -156,9 +114,6 @@ namespace Vendinha.Desktop.Screens
             btnNovo.Text = "Novo cliente";
             btnNovo.UseVisualStyleBackColor = true;
             btnNovo.Click += btnNovo_Click;
-            //
-            // btnEditar
-            //
             btnEditar.Location = new Point(145, 405);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(100, 32);
@@ -166,9 +121,6 @@ namespace Vendinha.Desktop.Screens
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
-            //
-            // btnExcluir
-            //
             btnExcluir.Location = new Point(255, 405);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(100, 32);
@@ -176,9 +128,6 @@ namespace Vendinha.Desktop.Screens
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
-            //
-            // btnDividas
-            //
             btnDividas.Location = new Point(535, 405);
             btnDividas.Name = "btnDividas";
             btnDividas.Size = new Size(150, 32);
@@ -186,9 +135,6 @@ namespace Vendinha.Desktop.Screens
             btnDividas.Text = "Ver dívidas";
             btnDividas.UseVisualStyleBackColor = true;
             btnDividas.Click += btnDividas_Click;
-            //
-            // ListarClientes
-            //
             AcceptButton = btnPesquisar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;

@@ -3,9 +3,6 @@ using Vendinha.Services;
 
 namespace Vendinha.Desktop.Screens
 {
-    /// <summary>
-    /// Listagem de clientes: ordenada por quem mais deve, busca por nome e paginação de 10 em 10.
-    /// </summary>
     public partial class ListarClientes : Form
     {
         private readonly ClienteService clienteService;
@@ -26,7 +23,6 @@ namespace Vendinha.Desktop.Screens
         {
             var pagina = clienteService.Listar(pesquisaAtual, paginaAtual);
 
-            // se excluiu o último item da página, volta uma página
             if (pagina.Itens.Count == 0 && paginaAtual > 1)
             {
                 paginaAtual--;
@@ -133,7 +129,7 @@ namespace Vendinha.Desktop.Screens
 
             var tela = new DividasCliente(clienteService, dividaService, id.Value);
             tela.ShowDialog(this);
-            CarregarDados(); // total devido pode ter mudado
+            CarregarDados();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

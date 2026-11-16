@@ -30,86 +30,53 @@ namespace Vendinha.Desktop.Screens
             btnSalvar = new Button();
             btnCancelar = new Button();
             SuspendLayout();
-            //
-            // lblTitulo
-            //
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblTitulo.Location = new Point(20, 15);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Text = "Novo cliente";
-            //
-            // lblNome
-            //
             lblNome.AutoSize = true;
             lblNome.Location = new Point(20, 60);
             lblNome.Name = "lblNome";
             lblNome.Text = "Nome completo *";
-            //
-            // txtNome
-            //
             txtNome.Location = new Point(20, 80);
             txtNome.MaxLength = 150;
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(380, 23);
             txtNome.TabIndex = 0;
-            //
-            // lblCpf
-            //
             lblCpf.AutoSize = true;
             lblCpf.Location = new Point(20, 115);
             lblCpf.Name = "lblCpf";
             lblCpf.Text = "CPF *";
-            //
-            // txtCpf
-            //
             txtCpf.Location = new Point(20, 135);
             txtCpf.Mask = "000.000.000-00";
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(180, 23);
             txtCpf.TabIndex = 1;
-            //
-            // lblDataNascimento
-            //
             lblDataNascimento.AutoSize = true;
             lblDataNascimento.Location = new Point(20, 170);
             lblDataNascimento.Name = "lblDataNascimento";
             lblDataNascimento.Text = "Data de nascimento *";
-            //
-            // pickerDataNascimento
-            //
             pickerDataNascimento.Format = DateTimePickerFormat.Short;
             pickerDataNascimento.Location = new Point(20, 190);
             pickerDataNascimento.Name = "pickerDataNascimento";
             pickerDataNascimento.Size = new Size(180, 23);
             pickerDataNascimento.TabIndex = 2;
             pickerDataNascimento.ValueChanged += pickerDataNascimento_ValueChanged;
-            //
-            // lblIdade
-            //
             lblIdade.AutoSize = true;
             lblIdade.ForeColor = Color.DimGray;
             lblIdade.Location = new Point(215, 194);
             lblIdade.Name = "lblIdade";
             lblIdade.Text = "Idade:";
-            //
-            // lblEmail
-            //
             lblEmail.AutoSize = true;
             lblEmail.Location = new Point(20, 225);
             lblEmail.Name = "lblEmail";
             lblEmail.Text = "E-mail";
-            //
-            // txtEmail
-            //
             txtEmail.Location = new Point(20, 245);
             txtEmail.MaxLength = 150;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(380, 23);
             txtEmail.TabIndex = 3;
-            //
-            // btnSalvar
-            //
             btnSalvar.Location = new Point(200, 290);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(95, 32);
@@ -117,9 +84,6 @@ namespace Vendinha.Desktop.Screens
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
-            //
-            // btnCancelar
-            //
             btnCancelar.Location = new Point(305, 290);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(95, 32);
@@ -127,9 +91,6 @@ namespace Vendinha.Desktop.Screens
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
-            //
-            // CadastroCliente
-            //
             AcceptButton = btnSalvar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;

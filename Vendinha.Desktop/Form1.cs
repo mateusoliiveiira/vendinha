@@ -3,9 +3,6 @@ using Vendinha.Services;
 
 namespace Vendinha.Desktop
 {
-    /// <summary>
-    /// Tela principal (menu).
-    /// </summary>
     public partial class Form1 : Form
     {
         private readonly ClienteService clienteService;
@@ -20,7 +17,6 @@ namespace Vendinha.Desktop
 
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
-            // janela modal
             var tela = new CadastroCliente(clienteService);
             tela.ShowDialog(this);
         }

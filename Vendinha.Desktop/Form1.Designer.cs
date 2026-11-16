@@ -23,51 +23,33 @@ namespace Vendinha.Desktop
             btnListarClientes = new Button();
             btnSair = new Button();
             SuspendLayout();
-            //
-            // lblTitulo
-            //
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitulo.Location = new Point(40, 30);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Text = "Vendinha";
-            //
-            // lblSubtitulo
-            //
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Location = new Point(44, 75);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Text = "Controle de contas penduradas";
-            //
-            // btnNovoCliente
-            //
             btnNovoCliente.Location = new Point(44, 120);
             btnNovoCliente.Name = "btnNovoCliente";
             btnNovoCliente.Size = new Size(260, 40);
             btnNovoCliente.Text = "Cadastrar cliente";
             btnNovoCliente.UseVisualStyleBackColor = true;
             btnNovoCliente.Click += btnNovoCliente_Click;
-            //
-            // btnListarClientes
-            //
             btnListarClientes.Location = new Point(44, 170);
             btnListarClientes.Name = "btnListarClientes";
             btnListarClientes.Size = new Size(260, 40);
             btnListarClientes.Text = "Clientes e dívidas";
             btnListarClientes.UseVisualStyleBackColor = true;
             btnListarClientes.Click += btnListarClientes_Click;
-            //
-            // btnSair
-            //
             btnSair.Location = new Point(44, 220);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(260, 40);
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
             btnSair.Click += btnSair_Click;
-            //
-            // Form1
-            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(350, 300);

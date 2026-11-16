@@ -14,7 +14,6 @@ namespace Vendinha.Api.Controllers
             this.service = service;
         }
 
-        /// <summary>Marca a dívida como paga.</summary>
         [HttpPut("{id:int}/pagar")]
         public IActionResult Pagar(int id)
         {

@@ -3,9 +3,6 @@ using Vendinha.Services;
 
 namespace Vendinha.Desktop.Screens
 {
-    /// <summary>
-    /// Dívidas de um cliente: lançar nova dívida (pendurar) e marcar como paga.
-    /// </summary>
     public partial class DividasCliente : Form
     {
         private readonly DividaService dividaService;
