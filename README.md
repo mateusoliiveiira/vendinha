@@ -5,12 +5,9 @@ Trabalho da materia Plataforma de Desenvolvimento de Sistemas (UNIMAR 2026/2), c
 Sistema para controlar as contas penduradas (fiado) dos clientes de uma vendinha.
 
 ## Integrantes
-RA: 2037913
-- Mateus Oliveira
------------
-RA: 2025953
-- Carlos Heinrich 
 
+- Mateus Oliveira - RA 2037913
+- Carlos Heinrich - RA 2025953
 
 ## O que o sistema faz
 
